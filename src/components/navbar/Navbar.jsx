@@ -5,7 +5,7 @@ import { MdHome } from "react-icons/md";
 
 const Navbar = ({ toggleSidebar, sidebarActive }) => {
   return (
-    <div className="w-full flex items-center justify-between fixed top-0 z-50 border-b bg-white">
+    <div className="w-full flex items-center justify-between fixed top-0 z-40 border-b bg-white">
       <div>
         <Link
           to={"/"}

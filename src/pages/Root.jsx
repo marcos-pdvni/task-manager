@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import Sidebar from "../components/sidebar/Sidebar";
 import MobileSidebar from "../components/sidebar/MobileSidebar";
+import Notification from "../components/notification/Notification";
 
 import { AnimatePresence } from "framer-motion";
 
 import { Outlet } from "react-router-dom";
 
+import { NotificationContext } from "../context/NotificationContext";
+
 const Root = () => {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
+  const { notification } = useContext(NotificationContext);
 
   return (
     <>
@@ -26,6 +30,15 @@ const Root = () => {
         <Outlet />
       </main>
       <Footer />
+      <AnimatePresence>
+        {notification && (
+          <Notification
+            title={notification.title}
+            message={notification.message}
+            status={notification.status}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };
